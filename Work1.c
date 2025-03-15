@@ -3,38 +3,37 @@
 // Grade A is “Excellent”, Grade B is “Very good”, Grade C is “Good”, Grade D is “Fair”, Grade F is “Failed”, other grades display “Invalid grade”
 
 #include<stdio.h>
+#include<ctype.h>
 int main(void) {
 
     //declare variables
-    int score;
+    char score;
 
     //prompt user for his/her score with condition 
-    do {
-        printf("Enter score of student: ");
-        scanf("%d", &score);
+        printf("Enter grade of student(A,B,C,D,F): ");
+        scanf(" %c", &score);
 
-        if(score < 0 || score >100) {
-            printf("Invalid grade\n");
-        }
-    }   while(score < 0 || score >100);
-    
+        score = toupper(score); //convert to uppercase in case
+
         // Determine grade using switch-case
-    switch (score / 10) {  // Divide by 10 to categorize scores into ranges
-        case 10:  // If score is 100
-        case 9:
+    switch (score) {  // Divide by 10 to categorize scores into ranges
+        case 'A':
             printf("Grade A: Excellent\n");
             break;
-        case 8:
+        case 'B':
             printf("Grade B: Very good\n");
             break;
-        case 7:
+        case 'C':
             printf("Grade C: Good\n");
             break;
-        case 6:
+        case 'D':
             printf("Grade D: Fair\n");
             break;
-        default:
+        case 'F':
             printf("Grade F: Failed\n");
+            break;
+        default:
+            printf("Invalid Grade\n");
             break;
     }
 
